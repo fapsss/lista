@@ -86,8 +86,6 @@ if aktualny_magazyn:
     
     if usun_button and towar_do_usuniecia:
         usun_towar(towar_do_usuniecia)
-        # Aby natychmiast odświeżyć interfejs (zalecane przy zmianie danych na dysku)
-        st.experimental_rerun()
         
 else:
     st.warning("Magazyn jest pusty. Dodaj pierwszy towar.")

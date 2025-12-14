@@ -4,6 +4,22 @@ import os
 # Definicja ścieżki do pliku
 PLIK_MAGAZYNU = "magazyn.txt"
 
+# --- NOWA FUNKCJA CSS DO USTAWIENIA TŁA ---
+def set_background_color(kolor_css):
+    """Wstrzykuje niestandardowy CSS, aby ustawić kolor tła całej strony."""
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-color: {kolor_css};
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+# --- KONIEC NOWEJ FUNKCJI ---
+
+
 def zaladuj_magazyn():
     """Wczytuje towary z pliku tekstowego do listy."""
     if os.path.exists(PLIK_MAGAZYNU):
@@ -48,6 +64,9 @@ def usun_towar(nazwa):
 
 st.set_page_config(page_title="Magazyn Zapisujący do Pliku", layout="wide")
 
+# Ustawienie koloru tła (np. jasny, łagodny zielony: #e6ffe6 lub żółty: #FFFFE0)
+set_background_color("#E0FFFF") # Użyjemy jasnego turkusu 'Light Cyan'
+
 st.title("💾 System Magazynowy (Zapis Plikowy)")
 st.subheader("Używa pliku magazyn.txt do trwałego przechowywania danych")
 
@@ -75,9 +94,7 @@ if aktualny_magazyn:
     
     st.markdown("##### Usuwanie pozycji")
     
-   
-
-# Wybór towaru do usunięcia
+    # Wybór towaru do usunięcia
     towar_do_usuniecia = st.selectbox(
         "Wybierz towar do usunięcia",
         options=unikalne,
@@ -88,10 +105,10 @@ if aktualny_magazyn:
 
     if usun_button and towar_do_usuniecia:
         usun_towar(towar_do_usuniecia)
-    
-    # 🚨 Zmiana na nowszą i zalecaną funkcję:
-        st.rerun()
+        
+        # Użycie nowszej funkcji ponownego uruchomienia
+        st.rerun() 
         
 else:
-     st.warning("Magazyn jest pusty. Dodaj pierwszy towar.")
+    st.warning("Magazyn jest pusty. Dodaj pierwszy towar.")
         

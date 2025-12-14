@@ -75,7 +75,9 @@ if aktualny_magazyn:
     
     st.markdown("##### Usuwanie pozycji")
     
-    # Wybór towaru do usunięcia
+   
+
+# Wybór towaru do usunięcia
     towar_do_usuniecia = st.selectbox(
         "Wybierz towar do usunięcia",
         options=unikalne,
@@ -83,11 +85,13 @@ if aktualny_magazyn:
     )
 
     usun_button = st.button("Usuń wybrane (jedno wystąpienie)")
-    
+
     if usun_button and towar_do_usuniecia:
         usun_towar(towar_do_usuniecia)
     
-    st.experimental_rerun() 
+    # 🚨 Zmiana na nowszą i zalecaną funkcję:
+        st.rerun()
         
 else:
-    st.warning("Magazyn jest pusty. Dodaj pierwszy towar.")
+     st.warning("Magazyn jest pusty. Dodaj pierwszy towar.")
+        

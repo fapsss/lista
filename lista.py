@@ -86,6 +86,8 @@ if aktualny_magazyn:
     
     if usun_button and towar_do_usuniecia:
         usun_towar(towar_do_usuniecia)
+    
+    aktualny_magazyn = zaladuj_magazyn()
         
 else:
     st.warning("Magazyn jest pusty. Dodaj pierwszy towar.")
